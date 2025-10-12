@@ -72,9 +72,9 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Vanta.js Background -->
-    <div id="vanta-bg"></div>
-
-    <!-- Navigation -->
+    <div id="vanta-bg">
+            </div>
+<!-- Navigation -->
     <nav class="fixed w-full z-50 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -560,7 +560,7 @@
             </div>
         </div>
     </section>
-<!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -573,14 +573,14 @@
                     <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
                         I'm currently available for freelance work. If you have a project that you want to get started, think you need my help with something or just fancy saying hello, then get in touch.
                     </p>
-                    <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="flex items-start">
                             <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
                                 <i data-feather="mail" class="w-5 h-5"></i>
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Email</h4>
-                                <a href="mailto:hello@example.com" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">hello@example.com</a>
+                                <a href="mailto:vs952093@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">vs952093@gmail.com</a>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -589,7 +589,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Phone</h4>
-                                <a href="tel:+1234567890" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">+1 (234) 567-890</a>
+                                <a href="tel:+919918962207" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">+91 9918962207</a>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -598,7 +598,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Location</h4>
-                                <p class="text-gray-600 dark:text-gray-400">Portland, OR</p>
+                                <p class="text-gray-600 dark:text-gray-400">Khalilabad, UP</p>
                             </div>
                         </div>
                     </div>
@@ -619,32 +619,24 @@
                 </div>
                 <div class="md:w-1/2">
                     <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
-                            </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
                         </div>
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"></textarea>
                         </div>
-                        <div>
-                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300">
-                                Send Message
-                            </button>
-                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300">
+                            Send Message
+                        </button>
                     </form>
                 </div>
-            </div>
+</div>
         </div>
     </section>
 
