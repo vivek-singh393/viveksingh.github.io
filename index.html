@@ -4,50 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vivek Singh Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
-    .container { max-width: 800px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-    h1, h2 { color: #333; }
-    .profile { display: flex; align-items: center; margin-bottom: 16px; }
-    .profile img { border-radius: 50%; width: 80px; height: 80px; margin-right: 24px; }
-    .achievements, .portfolio { margin-bottom: 32px; }
-    ul { padding-left: 20px; }
-    .contact { background: #f1f1f1; padding: 16px; border-radius: 6px; }
-    a { color: #0077cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <div class="profile">
-      <img src="https://avatars.githubusercontent.com/u/1074638095?v=4" alt="Vivek Singh profile">
-      <div>
-        <h1>Vivek Singh</h1>
-        <p>Software Engineer | Open Source Enthusiast</p>
-      </div>
-    </div>
-    <h2>Achievements</h2>
-    <div class="achievements">
-      <ul>
-        <li><strong>2024:</strong> Published NLP Research Paper at XYZ Conference</li>
-        <li><strong>2023:</strong> Built a scalable web app for ABC Corp</li>
-        <li><strong>2022:</strong> Won 1st place at Hackathon DEF</li>
-      </ul>
-    </div>
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-      <ul>
-        <li><strong>Project Alpha</strong> - <a href="#">GitHub Repo</a><br><span>React/Node.js based dashboard for analytics.</span></li>
-        <li><strong>Project Beta</strong> - <a href="#">Live Demo</a><br><span>Mobile app for health tracking (Flutter).</span></li>
-        <li><strong>Personal Blog</strong> - <a href="#">viveksingh.github.io/blog</a><br><span>Technical articles and tutorials.</span></li>
-      </ul>
-    </div>
-    <h2>Contact</h2>
-    <div class="contact">
-      <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/dkubernets">dkubernets</a></p>
-      <p>LinkedIn: <a href="#">linkedin.com/in/viveksingh</a></p>
-    </div>
+    <!-- Hamburger Button -->
+    <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <a href="#profile" class="nav-link active">Profile</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+    <main>
+      <section id="profile">
+        <div class="profile">
+          <img src="https://avatars.githubusercontent.com/u/1074638095?v=4" alt="Vivek Singh profile">
+          <div>
+            <h1>Vivek Singh</h1>
+            <p class="bio">Software Engineer | Open Source Enthusiast</p>
+          </div>
+        </div>
+      </section>
+      <section id="achievements">
+        <h2>Achievements</h2>
+        <ul class="achievements">
+          <li><strong>2024:</strong> Published NLP Research Paper at XYZ Conference</li>
+          <li><strong>2023:</strong> Built a scalable web app for ABC Corp</li>
+          <li><strong>2022:</strong> Won 1st place at Hackathon DEF</li>
+        </ul>
+      </section>
+      <section id="portfolio">
+        <h2 class="portfolio-title">Portfolio</h2>
+        <ul class="portfolio">
+          <li><strong>Project Alpha</strong> - <a href="#">GitHub Repo</a><br><span>React/Node.js based dashboard for analytics.</span></li>
+          <li><strong>Project Beta</strong> - <a href="#">Live Demo</a><br><span>Mobile app for health tracking (Flutter).</span></li>
+          <li><strong>Personal Blog</strong> - <a href="#">viveksingh.github.io/blog</a><br><span>Technical articles and tutorials.</span></li>
+        </ul>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact">
+          <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+          <p>GitHub: <a href="https://github.com/dkubernets">dkubernets</a></p>
+          <p>LinkedIn: <a href="#">linkedin.com/in/viveksingh</a></p>
+        </div>
+      </section>
+    </main>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
