@@ -1,64 +1,743 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vivek Singh Portfolio</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivek Singh | DevOps Engineer</title>
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        secondary: {
+                            500: '#ec4899',
+                            600: '#db2777',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Hamburger Button -->
-    <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
-      <span></span><span></span><span></span>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Vanta.js Background -->
+    <div id="vanta-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-gray-900 dark:text-white">Vivek<span class="gradient-text">Singh</span></span>
+</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">About</a>
+                    <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Projects</a>
+                    <a href="#skills" class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Skills</a>
+                    <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                        <i data-feather="moon" class="hidden dark:block"></i>
+                        <i data-feather="sun" class="block dark:hidden"></i>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600" id="mobile-menu-button">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Skills</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+                        Hi, I'm <span class="gradient-text">Vivek Singh</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
+                        DevOps Engineer & Cloud Specialist
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+                        I automate, optimize, and secure cloud infrastructure with a focus on CI/CD pipelines and infrastructure as code. Let's build robust and scalable systems together.
+                    </p>
+<div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-full hover:shadow-lg transition-all duration-300">
+                            Contact Me
+                        </a>
+                        <a href="#projects" class="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                            View Work
+                        </a>
+                    </div>
+                    <div class="flex mt-8 space-x-4">
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl opacity-75 blur-lg"></div>
+                        <div class="relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl p-6">
+                            <div class="text-center">
+                                <i data-feather="cloud" class="w-16 h-16 text-primary-500 mx-auto mb-4"></i>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Cloud & DevOps</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Automation | CI/CD | Infrastructure as Code</p>
+                                <div class="flex justify-center space-x-2">
+                                    <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300">AWS</span>
+                                    <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300">K8s</span>
+                                    <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300">Terraform</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+        </div>
+    </section>
+    <!-- Professional Summary Section -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Professional <span class="gradient-text">Summary</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"></div>
+            </div>
+            <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+                    Highly motivated DevOps Engineer with proven experience in cloud technologies, infrastructure automation, and CI/CD pipelines. Proficient in utilizing AWS services, Docker, Kubernetes, and automation tools. Dedicated to contributing to DevOps processes, continuous improvement, and cloud infrastructure optimization. Expertise in System Administration, Incident Management, and Team Leadership.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <i data-feather="mail" class="text-primary-500 mr-2"></i>
+                            Contact Info
+                        </h3>
+                        <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center">
+                                <i data-feather="phone" class="w-5 h-5 mr-2 text-primary-500"></i>
+                                +91 9918962207
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="mail" class="w-5 h-5 mr-2 text-primary-500"></i>
+                                vs952093@gmail.com
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="map-pin" class="w-5 h-5 mr-2 text-primary-500"></i>
+                                Khalilabad, Uttar Pradesh
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                            <i data-feather="globe" class="text-primary-500 mr-2"></i>
+                            Online Profiles
+                        </h3>
+                        <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center">
+                                <i data-feather="github" class="w-5 h-5 mr-2 text-primary-500"></i>
+                                <a href="#" class="hover:text-primary-500">GitHub</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i data-feather="linkedin" class="w-5 h-5 mr-2 text-primary-500"></i>
+                                <a href="#" class="hover:text-primary-500">LinkedIn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600">
+                        Download Resume
+                        <i data-feather="download" class="ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Professional <span class="gradient-text">Experience</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"></div>
+            </div>
+            <div class="space-y-12">
+                <!-- Experience 1 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">DevOps Engineer</h3>
+                            <p class="text-lg text-primary-500">High Catch Pvt. Ltd.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">04/2025 - 07/2025</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-400">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Developed and maintained AWS infrastructure using EC2, S3, and RDS, enhancing scalability and cost-effectiveness of cloud services.</li>
+                            <li>Automated CI/CD pipelines with Jenkins, improving deployment frequency and reliability by 20%.</li>
+                            <li>Provided troubleshooting and support for containerized applications using Docker and Kubernetes, ensuring high availability and performance.</li>
+                            <li>Monitored and optimized cloud-based services, decreasing infrastructure costs by 10% while maintaining 99.9% uptime.</li>
+                            <li>Implemented continuous integration practices and automated test suites, leading to a 15% reduction in bug reports.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Senior IT Executive</h3>
+                            <p class="text-lg text-primary-500">Startek (Aegis) Customer Support Pvt. Ltd</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">04/2024 - Present</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-400">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Led and mentored a team of IT professionals, improving team performance by 20% through coaching and training initiatives.</li>
+                            <li>Managed IT infrastructure, including servers, networks, and security systems, guaranteeing 99.9% uptime.</li>
+                            <li>Negotiated vendor contracts and managed relationships, achieving a 12% reduction in IT spending.</li>
+                            <li>Ensured IT security and compliance with ISO 27001 and SOC 2 standards.</li>
+                            <li>Collaborated with leadership to implement technology solutions, contributing to a 10% increase in operational efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">System Administrator</h3>
+                            <p class="text-lg text-primary-500">Outworks (Torrent Pharma)</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <span class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">08/2023 - 02/2024</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-400">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Installed, configured, and maintained operating systems, software, and hardware to optimize system performance.</li>
+                            <li>Managed user accounts, permissions, and access controls, enhancing data security and compliance.</li>
+                            <li>Monitored system performance, network stability, and server health, proactively resolving potential issues.</li>
+                            <li>Implemented regular backups and disaster recovery plans to minimize data loss and downtime.</li>
+                            <li>Troubleshooted and resolved hardware, software, and network issues, reducing downtime by 15%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">DevOps <span class="gradient-text">Projects</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="dollar-sign" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Finance Me</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Automated financial service infrastructure</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Managed source code using Git</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Automated AWS infrastructure with Terraform</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Built CI/CD pipelines with Jenkins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent opacity-0 transition-all duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Finance Me</h3>
+                        <p class="text-gray-300 mb-4">Automated financial service infrastructure with full CI/CD pipeline</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full font-medium">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="heart" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Medicure</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Healthcare application infrastructure</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Kubernetes cluster management</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Automated deployment with Ansible</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Reduced development time by 50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent opacity-0 transition-all duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Medicure</h3>
+                        <p class="text-gray-300 mb-4">Healthcare application with Kubernetes orchestration</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full font-medium">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-gray-700">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="shield" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">Insure Me</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Insurance platform infrastructure</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">AWS EC2 automation with Terraform</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Docker container optimization</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-feather="check-circle" class="w-4 h-4 text-primary-500 mr-2"></i>
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Reduced delivery time by 40%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent opacity-0 transition-all duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Insure Me</h3>
+                        <p class="text-gray-300 mb-4">Insurance platform with automated infrastructure</p>
+                        <div class="flex space-x-3">
+                            <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full font-medium">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Technical <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cloud & Infrastructure -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                            <i data-feather="cloud" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Cloud & Infrastructure</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Amazon Web Services (AWS)</span>
+                                <span class="text-gray-500 dark:text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Docker</span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Kubernetes</span>
+                                <span class="text-gray-500 dark:text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation & CI/CD -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                            <i data-feather="repeat" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Automation & CI/CD</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Terraform</span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Ansible</span>
+                                <span class="text-gray-500 dark:text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Jenkins</span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Git/GitHub</span>
+                                <span class="text-gray-500 dark:text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring & System Admin -->
+                <div class="bg-white dark:bg-gray-700 rounded-xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                            <i data-feather="monitor" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Monitoring & Admin</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Prometheus</span>
+                                <span class="text-gray-500 dark:text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Grafana</span>
+                                <span class="text-gray-500 dark:text-gray-400">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Linux/Ubuntu</span>
+                                <span class="text-gray-500 dark:text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700 dark:text-gray-300 font-medium">Bash/Python</span>
+                                <span class="text-gray-500 dark:text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                                <div class="bg-gradient-to-r from-primary-500 to-secondary-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">Let's talk about your project</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                        I'm currently available for freelance work. If you have a project that you want to get started, think you need my help with something or just fancy saying hello, then get in touch.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Email</h4>
+                                <a href="mailto:hello@example.com" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">hello@example.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Phone</h4>
+                                <a href="tel:+1234567890" class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-500">+1 (234) 567-890</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-lg bg-primary-500/10 text-primary-500 mr-4">
+                                <i data-feather="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-1">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Portland, OR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex mt-8 space-x-4">
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="github"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600">
+                            <i data-feather="dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-xl font-bold text-white">Vivek<span class="gradient-text">Singh</span></span>
+                    <p class="mt-2">DevOps Engineer | © 2024 All rights reserved.</p>
+</div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                </div>
+</div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 p-3 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white shadow-lg opacity-0 invisible transition-all duration-300">
+        <i data-feather="arrow-up"></i>
     </button>
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar" id="sidebar">
-      <nav>
-        <a href="#profile" class="nav-link active">Profile</a>
-        <a href="#achievements" class="nav-link">Achievements</a>
-        <a href="#portfolio" class="nav-link">Portfolio</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </nav>
-    </aside>
-    <div class="overlay" id="overlay"></div>
-    <main>
-      <section id="profile">
-        <div class="profile">
-          <img src="https://avatars.githubusercontent.com/u/1074638095?v=4" alt="Vivek Singh profile">
-          <div>
-            <h1>Vivek Singh</h1>
-            <p class="bio">Software Engineer | Open Source Enthusiast</p>
-          </div>
-        </div>
-      </section>
-      <section id="achievements">
-        <h2>Achievements</h2>
-        <ul class="achievements">
-          <li><strong>2024:</strong> Published NLP Research Paper at XYZ Conference</li>
-          <li><strong>2023:</strong> Built a scalable web app for ABC Corp</li>
-          <li><strong>2022:</strong> Won 1st place at Hackathon DEF</li>
-        </ul>
-      </section>
-      <section id="portfolio">
-        <h2 class="portfolio-title">Portfolio</h2>
-        <ul class="portfolio">
-          <li><strong>Project Alpha</strong> - <a href="#">GitHub Repo</a><br><span>React/Node.js based dashboard for analytics.</span></li>
-          <li><strong>Project Beta</strong> - <a href="#">Live Demo</a><br><span>Mobile app for health tracking (Flutter).</span></li>
-          <li><strong>Personal Blog</strong> - <a href="#">viveksingh.github.io/blog</a><br><span>Technical articles and tutorials.</span></li>
-        </ul>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact">
-          <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-          <p>GitHub: <a href="https://github.com/dkubernets">dkubernets</a></p>
-          <p>LinkedIn: <a href="#">linkedin.com/in/viveksingh</a></p>
-        </div>
-      </section>
-    </main>
-  </div>
-  <script src="script.js"></script>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x6366f1,
+            backgroundColor: 0x0,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
 </body>
 </html>
